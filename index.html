@@ -18,7 +18,8 @@
   참고 사이트의 코드/문구/개인정보/샘플 경력을 복사하지 않았습니다.
   EDIT 1: 맨 아래 PROFILE 객체. 이름, 이메일, 링크, 이미지 경로, 기본 언어.
   EDIT 2: 자기소개 / EDIT 3: 프로젝트 / EDIT 4: 학력
-  EDIT 5: 기존 출판 논문 / EDIT 6: SAND 2025 성과.
+  EDIT 5: 기존 출판 논문 / EDIT 6: SAND 2025 및 2023 수상 성과.
+  EDIT 7: 활동 사진 3장 (assets 폴더에 있는 JPG 파일 사용).
   외부 웹폰트를 불러오지 못하더라도 시스템 글꼴로 표시됩니다.
 -->
 <style>
@@ -174,6 +175,38 @@ strong {color:var(--ink);font-weight:650}
 .award-card .award-link {display:inline-flex;align-items:center;gap:6px;font-size:11px;min-height:36px;margin-top:12px;font-weight:650}
 .award-card .award-link:hover {text-decoration:underline}
 .award-trophy {width:28px;height:28px;color:var(--blue);margin-top:5px}
+/* 학력 2개 항목 및 수상 기록 */
+.education-list {display:grid;gap:27px}
+.education-list .education-item:last-child {border-bottom:0;padding-bottom:0}
+.record-icon--secondary {background:#afcce8;color:#1c4b78}
+.award-history {display:grid;gap:0;margin-top:24px}
+.award-history-item {display:grid;grid-template-columns:72px minmax(0,1fr);gap:19px;padding:19px 2px;border-bottom:1px solid var(--line)}
+.award-history-item h3 {font-size:15px;line-height:1.55;font-weight:650;margin:0 0 5px}
+.award-history-item p:not(.record-date) {font-size:12px;color:var(--muted);line-height:1.8}
+.award-history-item .inline-link {font-size:11px;margin-top:3px}
+/* 활동 사진 아카이브: 원본 이미지가 잘리지 않게 contain으로 배치합니다. */
+.activities-band {padding:80px 0 90px;background:#f5faff;border-block:1px solid var(--line)}
+.activities-heading {display:flex;justify-content:space-between;align-items:flex-end;gap:28px;margin-bottom:35px}
+.activities-heading .section-heading {margin-bottom:0}
+.activities-heading>p {font-size:12px;color:var(--muted);max-width:340px;margin-bottom:3px}
+.activity-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.activity-card {min-width:0;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);overflow:hidden}
+.activity-card--featured {grid-column:1/-1;display:grid;grid-template-columns:minmax(0,.87fr) minmax(0,1.13fr)}
+.activity-photo {position:relative;display:block;aspect-ratio:4/3;background:#e6f2ff;overflow:hidden;outline-offset:-4px}
+.activity-photo img {width:100%;height:100%;object-fit:contain;object-position:center;background:#e6f2ff;transition:transform .2s ease}
+.activity-photo:hover img {transform:scale(1.025)}
+.activity-card--featured .activity-photo {height:100%;min-height:350px;aspect-ratio:auto}
+.activity-body {padding:27px 28px 30px;display:flex;flex-direction:column;align-items:flex-start}
+.activity-badges {display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-bottom:13px;font-size:10px;font-weight:650;letter-spacing:.045em;color:var(--blue)}
+.activity-badges .award-label {border:1px solid #bcd6f0;padding:3px 9px;color:var(--blue-dark);border-radius:2px;background:var(--sky)}
+.activity-card h3 {font-size:21px;line-height:1.5;letter-spacing:-.035em;font-weight:700;margin:0 0 10px}
+.activity-card .activity-event {font-size:11px;color:var(--muted);line-height:1.8;margin-bottom:12px}
+.activity-card .activity-description {font-size:12px;line-height:1.85;color:var(--text)}
+.activity-points {margin:14px 0 18px;padding:0 0 0 17px;line-height:1.85;color:var(--text);font-size:12px}
+.activity-points li {margin:0 0 6px}
+.activity-view {display:inline-flex;align-items:center;gap:8px;min-height:38px;margin-top:auto;padding-top:12px;color:var(--blue);font-size:11px;font-weight:650}
+.activity-view:hover {text-decoration:underline}
+.activity-photo:focus-visible,.activity-view:focus-visible {outline:3px solid var(--blue);outline-offset:3px}
 /* 프로젝트는 각 주제를 독립된 카드로 보여줍니다. */
 .projects-band {background:#edf5fd;padding:76px 0 82px;border-block:1px solid var(--line)}
 .projects-band .ghost {color:#dcebf9}
@@ -274,6 +307,9 @@ strong {color:var(--ink);font-weight:650}
   .record-heading h2 {font-size:26px}
   .award-card {padding:23px}
   .award-top h3 {font-size:19px}
+  .activity-grid {gap:18px}
+  .activity-body {padding:23px}
+  .activity-card--featured .activity-photo {min-height:330px}
   .project {padding:24px}
   .project h3 {font-size:20px}
   .contact-layout {gap:35px}
@@ -358,6 +394,18 @@ strong {color:var(--ink);font-weight:650}
   .award-trophy {width:23px;height:23px}
   .award-detail {font-size:11px}
   .award-extra {font-size:10px}
+  .award-history-item {grid-template-columns:1fr;gap:2px}
+  .award-history-item h3 {font-size:14px}
+  .activities-band {padding:55px 0 60px}
+  .activities-heading {display:block;margin-bottom:23px}
+  .activities-heading>p {margin-top:10px}
+  .activity-grid,.activity-card--featured {display:grid;grid-template-columns:1fr}
+  .activity-grid {gap:18px}
+  .activity-card--featured {grid-column:auto}
+  .activity-photo,.activity-card--featured .activity-photo {aspect-ratio:4/3;height:auto;min-height:0}
+  .activity-body {padding:22px 21px 25px}
+  .activity-card h3 {font-size:19px}
+  .activity-card .activity-description,.activity-points {font-size:12px}
   .projects-band {padding:48px 0 50px}
   .projects-heading {display:block;margin-bottom:27px}
   .projects-heading>p {max-width:100%;font-size:11px;margin-top:16px}
@@ -406,13 +454,13 @@ strong {color:var(--ink);font-weight:650}
   .site-header,.hero,.site-footer,.resume-sidebar,.motion-button,.skip,.profile-actions {display:none!important}
   body {background:white;color:#222;font-size:11pt}
   .shell {width:100%}
-  .about,.research,.contact,.projects-band {padding:20px 0;background:white;border:0}
+  .about,.research,.contact,.projects-band,.activities-band {padding:20px 0;background:white;border:0}
   .about-grid {grid-template-columns:150px 1fr;gap:25px}
   .portrait {max-width:150px;margin:0}
   .section-heading .ghost {display:none}
   .research-layout {display:block}
   .section-heading {padding:0}
-  .record-section,.project,.publication-list li,.award-card {break-inside:avoid}
+  .record-section,.project,.publication-list li,.award-card,.activity-card {break-inside:avoid}
   .highlights {margin-top:25px}
   .contact-layout {display:block}
 }
@@ -430,6 +478,7 @@ strong {color:var(--ink);font-weight:650}
       <a href="#home" aria-current="location"><span data-lang="en" lang="en">Home</span><span data-lang="ko" lang="ko">홈</span></a>
       <a href="#about"><span data-lang="en" lang="en">About</span><span data-lang="ko" lang="ko">소개</span></a>
       <a href="#research"><span data-lang="en" lang="en">Research</span><span data-lang="ko" lang="ko">연구</span></a>
+      <a href="#activities"><span data-lang="en" lang="en">Activities</span><span data-lang="ko" lang="ko">활동</span></a>
       <a href="#projects"><span data-lang="en" lang="en">Projects</span><span data-lang="ko" lang="ko">프로젝트</span></a>
       <a href="#contact"><span data-lang="en" lang="en">Contact</span><span data-lang="ko" lang="ko">연락처</span></a>
     </nav>
@@ -528,13 +577,29 @@ strong {color:var(--ink);font-weight:650}
         <p class="sidebar-note"><span data-lang="en" lang="en">A record of my studies,<br>research, and competition results.</span><span data-lang="ko" lang="ko">학업, 연구와<br>대회 참가 성과를 기록합니다.</span></p>
       </aside>
       <div class="research-content">
-        <!-- EDIT 4: 시작 연도를 임의로 추가하지 않습니다. -->
+        <!-- EDIT 4: 확정 학력. 학사(2021.03–2026.02), 석사(2026.03–현재). -->
         <section id="education" class="record-section" aria-labelledby="education-title">
           <div class="record-heading"><h2 id="education-title"><span data-lang="en" lang="en">Education</span><span data-lang="ko" lang="ko">학력</span></h2></div>
-          <article class="education-item">
-            <span class="record-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 9 10-5 10 5-10 5-10-5ZM6 11v6c3 3 9 3 12 0v-6M22 9v7"/></svg></span>
-            <div><p class="record-date"><span data-lang="en" lang="en">Current</span><span data-lang="ko" lang="ko">재학 중</span></p><h3 data-profile="role">M.S. Student</h3><p class="institution" data-profile="university">Chung-Ang University</p><p class="department" data-profile="department">Department of Statistics and Data Science</p></div>
-          </article>
+          <div class="education-list">
+            <article class="education-item">
+              <span class="record-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 9 10-5 10 5-10 5-10-5ZM6 11v6c3 3 9 3 12 0v-6M22 9v7"/></svg></span>
+              <div>
+                <p class="record-date"><span data-lang="en" lang="en">Mar 2026 – Present</span><span data-lang="ko" lang="ko">2026.03 – 현재</span></p>
+                <h3><span data-lang="en" lang="en">M.S. Student</span><span data-lang="ko" lang="ko">석사과정</span></h3>
+                <p class="institution" data-profile="university">Chung-Ang University</p>
+                <p class="department"><span data-lang="en" lang="en">Department of Statistics and Data Science</span><span data-lang="ko" lang="ko">통계데이터사이언스학과</span></p>
+              </div>
+            </article>
+            <article class="education-item">
+              <span class="record-icon record-icon--secondary"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 9 10-5 10 5-10 5-10-5ZM6 11v6c3 3 9 3 12 0v-6M22 9v7"/></svg></span>
+              <div>
+                <p class="record-date"><span data-lang="en" lang="en">Mar 2021 – Feb 2026</span><span data-lang="ko" lang="ko">2021.03 – 2026.02</span></p>
+                <h3><span data-lang="en" lang="en">B.S. in Applied Statistics</span><span data-lang="ko" lang="ko">응용통계학과 · 학사</span></h3>
+                <p class="institution" data-profile="university">Chung-Ang University</p>
+                <p class="department"><span data-lang="en" lang="en">Department of Applied Statistics</span><span data-lang="ko" lang="ko">응용통계학과</span></p>
+              </div>
+            </article>
+          </div>
         </section>
         <!-- EDIT 5: 기존 논문 제목, 저자 순서, DOI 및 KCI 링크를 유지합니다. -->
         <section id="publications" class="record-section" aria-labelledby="publications-title">
@@ -568,16 +633,97 @@ strong {color:var(--ink);font-weight:650}
 </h3></div><svg class="award-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h10v7a5 5 0 0 1-10 0V3ZM7 5H3v3a4 4 0 0 0 4 4M17 5h4v3a4 4 0 0 1-4 4M12 15v6M8 21h8"/></svg></div>
             <p class="award-detail"><span data-lang="en" lang="en">Speech Analysis for Neurodegenerative Diseases Challenge · Team CAU</span><span data-lang="ko" lang="ko">Speech Analysis for Neurodegenerative Diseases Challenge · CAU 팀</span></p><p class="award-extra"><span data-lang="en" lang="en">Follow-up ALS severity prediction · Avg. F1-score 0.5437 · ICASSP 2026 Grand Challenge (held in 2025)</span><span data-lang="ko" lang="ko">추적 시점 ALS 중증도 예측 · 평균 F1-score 0.5437 · ICASSP 2026 Grand Challenge (2025년 개최)</span></p><a class="award-link" href="https://www.sand.icar.cnr.it/#page-top" rel="noopener noreferrer" target="_blank"><span data-lang="en" lang="en">Official leaderboard</span><span data-lang="ko" lang="ko">공식 순위표</span> ↗</a>
           </article>
+          <div class="award-history" aria-label="Additional awards" data-label-en="Additional awards" data-label-ko="추가 수상 내역">
+            <article class="award-history-item">
+              <p class="record-date">2023.12</p>
+              <div>
+                <h3><span data-lang="en" lang="en">1st Place · DART-B Data Analysis Competition</span><span data-lang="ko" lang="ko">중앙대학교 DART-B 데이터분석 공모전 1등</span></h3>
+                <p><span data-lang="en" lang="en">PUBG web-log analysis project</span><span data-lang="ko" lang="ko">배틀그라운드 웹 로그 분석 프로젝트</span></p>
+                <a class="inline-link" href="#activity-dartb"><span data-lang="en" lang="en">View photo</span><span data-lang="ko" lang="ko">활동 사진 보기</span> ↗</a>
+              </div>
+            </article>
+            <article class="award-history-item">
+              <p class="record-date">2023.12</p>
+              <div>
+                <h3><span data-lang="en" lang="en">2nd Place (Excellence Award) · Applied Statistics Analysis Competition</span><span data-lang="ko" lang="ko">중앙대학교 응용통계학과 분석공모전 2등(우수상)</span></h3>
+                <p><span data-lang="en" lang="en">Accommodation evaluation and customer satisfaction index</span><span data-lang="ko" lang="ko">숙박시설 평가 및 고객만족지수 산출</span></p>
+                <a class="inline-link" href="#activity-statistics"><span data-lang="en" lang="en">View photo</span><span data-lang="ko" lang="ko">활동 사진 보기</span> ↗</a>
+              </div>
+            </article>
+          </div>
         </section>
       </div>
     </div>
   </div>
 
+  <!-- EDIT 7: 사진으로 보는 활동 및 발표. 모든 사진 경로는 index.html 기준 상대경로입니다. -->
+  <section id="activities" class="activities-band" aria-labelledby="activities-title">
+    <div class="shell">
+      <div class="activities-heading">
+        <div class="section-heading">
+          <span class="ghost" aria-hidden="true">Activities</span>
+          <p class="kicker"><span data-lang="en" lang="en">03 / MOMENTS &amp; MILESTONES</span><span data-lang="ko" lang="ko">03 / 활동과 기록</span></p>
+          <h2 id="activities-title"><span data-lang="en" lang="en">Activities</span><span data-lang="ko" lang="ko">활동 내역</span></h2>
+        </div>
+        <p><span data-lang="en" lang="en">Competitions and academic presentations, documented through photos.</span><span data-lang="ko" lang="ko">공모전 수상과 학회 발표를 사진으로 정리했습니다.</span></p>
+      </div>
+
+      <div class="activity-grid">
+        <!-- 2023.12 중앙대학교 응용통계학과 분석공모전: 2등(우수상) -->
+        <article id="activity-statistics" class="activity-card activity-card--featured">
+          <a class="activity-photo" href="assets/applied_statistics_2nd.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open applied statistics competition award photograph" data-label-en="Open applied statistics competition award photograph" data-label-ko="응용통계학과 분석공모전 수상 사진 크게 보기">
+            <img src="assets/applied_statistics_2nd.jpg" loading="lazy" decoding="async" alt="2023년 중앙대학교 응용통계학과 분석공모전 우수상 수상 사진" data-alt-en="Photograph from the 2023 Applied Statistics analysis competition excellence award" data-alt-ko="2023년 중앙대학교 응용통계학과 분석공모전 우수상 수상 사진">
+          </a>
+          <div class="activity-body">
+            <div class="activity-badges"><span>2023.12</span><span class="award-label"><span data-lang="en" lang="en">2nd Place · Excellence Award</span><span data-lang="ko" lang="ko">2등 · 우수상</span></span></div>
+            <h3><span data-lang="en" lang="en">Accommodation Evaluation &amp; Customer Satisfaction Index</span><span data-lang="ko" lang="ko">숙박시설 평가 및 고객만족지수 산출</span></h3>
+            <p class="activity-event"><span data-lang="en" lang="en">Chung-Ang University · Department of Applied Statistics Analysis Competition</span><span data-lang="ko" lang="ko">중앙대학교 응용통계학과 분석공모전</span></p>
+            <p class="activity-description"><span data-lang="en" lang="en">Analyzed accommodation reviews to derive aspect-level satisfaction indices.</span><span data-lang="ko" lang="ko">숙박시설의 리뷰 데이터를 분석하고 속성별 고객만족지수를 산출한 프로젝트입니다.</span></p>
+            <ul class="activity-points">
+              <li><span data-lang="en" lang="en">Developed a sentiment classification model using reviews labeled positive, neutral, and negative.</span><span data-lang="ko" lang="ko">긍정·중립·부정으로 라벨링된 리뷰를 학습해 감성 분석 모델 구축</span></li>
+              <li><span data-lang="en" lang="en">Analyzed review aspects and derived a satisfaction index for each aspect.</span><span data-lang="ko" lang="ko">숙박시설 속성별 리뷰 분석 및 만족지수 산출</span></li>
+              <li><span data-lang="en" lang="en">Examined influencing factors and related keywords to make relevant information easier to find.</span><span data-lang="ko" lang="ko">영향 요인과 연관 키워드를 분석해 관심 정보에 쉽게 접근할 수 있도록 구성</span></li>
+            </ul>
+            <a class="activity-view" href="assets/applied_statistics_2nd.jpg" target="_blank" rel="noopener noreferrer"><span data-lang="en" lang="en">View photograph</span><span data-lang="ko" lang="ko">사진 크게 보기</span> ↗</a>
+          </div>
+        </article>
+
+        <!-- 2023.12 DART-B 데이터분석 공모전 1등 -->
+        <article id="activity-dartb" class="activity-card">
+          <a class="activity-photo" href="assets/DARTB_1st.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open DART-B competition award photograph" data-label-en="Open DART-B competition award photograph" data-label-ko="DART-B 공모전 수상 사진 크게 보기">
+            <img src="assets/DARTB_1st.jpg" loading="lazy" decoding="async" alt="2023년 중앙대학교 DART-B 공모전 1등 수상 사진" data-alt-en="Photograph from the 2023 DART-B data analysis competition first-place award" data-alt-ko="2023년 중앙대학교 DART-B 공모전 1등 수상 사진">
+          </a>
+          <div class="activity-body">
+            <div class="activity-badges"><span>2023.12</span><span class="award-label"><span data-lang="en" lang="en">1st Place</span><span data-lang="ko" lang="ko">1등 · 대상</span></span></div>
+            <h3><span data-lang="en" lang="en">PUBG Web-log Analysis</span><span data-lang="ko" lang="ko">배틀그라운드 웹 로그 분석 프로젝트</span></h3>
+            <p class="activity-event"><span data-lang="en" lang="en">Chung-Ang University · DART-B Data Analysis Society Competition</span><span data-lang="ko" lang="ko">중앙대학교 데이터분석 학회 DART-B 공모전</span></p>
+            <p class="activity-description"><span data-lang="en" lang="en">Received first place for a PUBG web-log data analysis project.</span><span data-lang="ko" lang="ko">배틀그라운드 웹 로그 데이터를 분석한 프로젝트로 1등을 수상했습니다.</span></p>
+            <a class="activity-view" href="assets/DARTB_1st.jpg" target="_blank" rel="noopener noreferrer"><span data-lang="en" lang="en">View photograph</span><span data-lang="ko" lang="ko">사진 크게 보기</span> ↗</a>
+          </div>
+        </article>
+
+        <!-- 2026 한국통계학회 포스터 발표. 발표 제목과 월은 입력받지 않아 쓰지 않습니다. -->
+        <article id="activity-poster" class="activity-card">
+          <a class="activity-photo" href="assets/stat_poster_presentation.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open statistical society poster photograph" data-label-en="Open statistical society poster photograph" data-label-ko="한국통계학회 포스터 발표 사진 크게 보기">
+            <img src="assets/stat_poster_presentation.jpg" loading="lazy" decoding="async" alt="2026년 한국통계학회 포스터 발표 사진" data-alt-en="Photograph from a poster presentation at the Korean Statistical Society in 2026" data-alt-ko="2026년 한국통계학회 포스터 발표 사진">
+          </a>
+          <div class="activity-body">
+            <div class="activity-badges"><span>2026</span><span class="award-label"><span data-lang="en" lang="en">Poster Presentation</span><span data-lang="ko" lang="ko">학회 포스터 발표</span></span></div>
+            <h3><span data-lang="en" lang="en">Korean Statistical Society Poster Presentation</span><span data-lang="ko" lang="ko">한국통계학회 포스터 발표</span></h3>
+            <p class="activity-event"><span data-lang="en" lang="en">Korean Statistical Society · 2026</span><span data-lang="ko" lang="ko">한국통계학회 · 2026년</span></p>
+            <p class="activity-description"><span data-lang="en" lang="en">Presented a research poster at a Korean Statistical Society meeting.</span><span data-lang="ko" lang="ko">2026년 한국통계학회에서 연구 포스터를 발표했습니다.</span></p>
+            <a class="activity-view" href="assets/stat_poster_presentation.jpg" target="_blank" rel="noopener noreferrer"><span data-lang="en" lang="en">View photograph</span><span data-lang="ko" lang="ko">사진 크게 보기</span> ↗</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- EDIT 3: 기존 연구 프로젝트 2건과 개인 홈페이지 프로젝트입니다. -->
   <section id="projects" class="projects-band" aria-labelledby="projects-title">
     <div class="shell">
       <div class="projects-heading">
-        <div class="section-heading"><span class="ghost" aria-hidden="true">Projects</span><p class="kicker"><span data-lang="en" lang="en">03 / SELECTED WORK</span><span data-lang="ko" lang="ko">03 / 연구 및 작업</span></p><h2 id="projects-title"><span data-lang="en" lang="en">My Projects</span><span data-lang="ko" lang="ko">프로젝트</span></h2></div>
+        <div class="section-heading"><span class="ghost" aria-hidden="true">Projects</span><p class="kicker"><span data-lang="en" lang="en">04 / SELECTED WORK</span><span data-lang="ko" lang="ko">04 / 연구 및 작업</span></p><h2 id="projects-title"><span data-lang="en" lang="en">My Projects</span><span data-lang="ko" lang="ko">프로젝트</span></h2></div>
         <p><span data-lang="en" lang="en">Machine learning for speech and biomedical data.</span><span data-lang="ko" lang="ko">음성과 의생물학 데이터를 다루는<br>머신러닝 연구입니다.</span></p>
       </div>
       <div class="project-grid"><article class="project"><div class="project-top"><span class="project-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10v4M7 6v12M11 3v18M15 8v8M19 5v14M23 10v4"/></svg></span><span class="project-index">01</span></div><div class="project-meta"><span data-lang="en" lang="en">Speech &amp; healthcare</span><span data-lang="ko" lang="ko">음성 및 의료 AI</span></div><h3><span data-lang="en" lang="en">ALS severity prediction from speech</span><span data-lang="ko" lang="ko">음성으로 ALS 중증도 예측하기</span></h3><p><span data-lang="en" lang="en">A study of hybrid speech features combining pretrained Whisper embeddings with acoustic features to estimate ALS severity.</span><span data-lang="ko" lang="ko">Whisper 임베딩과 음향 특징을 결합해 ALS 중증도를 예측하는 연구입니다.</span></p><div class="project-tools"><span>Speech</span><span>Whisper</span><span>Machine Learning</span></div><a class="project-link" href="https://doi.org/10.5351/KJAS.2026.39.4.401" rel="noopener noreferrer" target="_blank"><span data-lang="en" lang="en">Read the paper</span><span data-lang="ko" lang="ko">논문 보기</span> ↗</a></article>
@@ -588,7 +734,7 @@ strong {color:var(--ink);font-weight:650}
 
   <section id="contact" class="contact shell" aria-labelledby="contact-title">
     <div class="contact-layout">
-      <div><div class="section-heading"><span class="ghost" aria-hidden="true">Contact</span><p class="kicker"><span data-lang="en" lang="en">04 / GET IN TOUCH</span><span data-lang="ko" lang="ko">04 / 연락처</span></p><h2 id="contact-title"><span data-lang="en" lang="en">Let’s Connect</span><span data-lang="ko" lang="ko">연락하기</span></h2></div><p><span data-lang="en" lang="en">For questions about my work, research, or projects, you can find me here.</span><span data-lang="ko" lang="ko">연구나 프로젝트에 관한 이야기는<br>아래 채널로 연락해 주세요.</span></p></div>
+      <div><div class="section-heading"><span class="ghost" aria-hidden="true">Contact</span><p class="kicker"><span data-lang="en" lang="en">05 / GET IN TOUCH</span><span data-lang="ko" lang="ko">05 / 연락처</span></p><h2 id="contact-title"><span data-lang="en" lang="en">Let’s Connect</span><span data-lang="ko" lang="ko">연락하기</span></h2></div><p><span data-lang="en" lang="en">For questions about my work, research, or projects, you can find me here.</span><span data-lang="ko" lang="ko">연구나 프로젝트에 관한 이야기는<br>아래 채널로 연락해 주세요.</span></p></div>
       <div class="contact-options">
         <a class="contact-option" data-link="github" href="https://github.com/SongAriAri" target="_blank" rel="noopener noreferrer"><span class="contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4 1-4-2-6-2m12 5v-4a3.5 3.5 0 0 0-1-3c3-.4 6-1.5 6-6a4.6 4.6 0 0 0-1.3-3.2A4.3 4.3 0 0 0 18.6 3S17.4 2.6 15 4a11 11 0 0 0-6 0C6.6 2.6 5.4 3 5.4 3a4.3 4.3 0 0 0-.1 2.8A4.6 4.6 0 0 0 4 9c0 4.5 3 5.6 6 6a3.5 3.5 0 0 0-1 3v4"/></svg></span><span><span class="contact-label">GitHub</span><span class="contact-value">SongAriAri</span></span><span class="contact-arrow" aria-hidden="true">↗</span></a>
         <a class="contact-option" data-contact-email hidden><span class="contact-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg></span><span><span class="contact-label">Email</span><span class="contact-value" data-email-value></span></span><span class="contact-arrow" aria-hidden="true">↗</span></a>
@@ -646,6 +792,7 @@ function applyLanguage(language, updateUrl=false) {
     if (value && typeof value === 'object') element.textContent = value[currentLanguage] ?? value.en ?? '';
   });
   $$('[data-label-en]').forEach(element => element.setAttribute('aria-label', element.getAttribute('data-label-' + currentLanguage)));
+  $$('[data-alt-en]').forEach(element => element.setAttribute('alt', element.getAttribute('data-alt-' + currentLanguage)));
   $$('[data-set-language]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.setLanguage === currentLanguage)));
   document.title = PROFILE.name[currentLanguage] + (currentLanguage === 'ko' ? ' | 연구 홈페이지' : ' | Research Portfolio');
   $('meta[name="description"]').content = currentLanguage === 'ko'
