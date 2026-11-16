@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Chaerin Song — research, projects, and publications in biomedical data science and machine learning.">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Chaerin Song — research, publications, and awards in machine learning and biomedical data science.">
+  <meta name="theme-color" content="#dcefff">
   <link rel="preload" as="image" href="assets/turtle_ride.png">
   <title>Chaerin Song | Research homepage</title>
   <!--
@@ -13,6 +13,7 @@
     EDIT 3: 프로젝트 카드
     EDIT 4: 학력
     EDIT 5: 실제 출판 논문 2편 (KCI 확인)
+    EDIT 6: 2025 SAND Challenge Task 2 수상 내역
     이미지 2개는 index.html 옆 assets 폴더에 있어야 합니다.
        assets/crossed_arms_pose.gif  (움직이는 프로필)
        assets/turtle_ride.png       (첫 화면 배경)
@@ -21,15 +22,19 @@
   -->
   <style>
     :root {
-      --paper: #ffffff;
-      --ink: #1c2b41;
-      --text: #46546a;
-      --muted: #657086;
-      --blue: #2857a6;
-      --blue-dark: #173f82;
-      --soft-blue: #f1f6fd;
-      --line: #e2e8f1;
-      --width: 1000px;
+      /* Sky, cloud and turtle colors from assets/turtle_ride.png. */
+      --paper: #f6faff;
+      --ink: #163c5a;
+      --text: #345872;
+      --muted: #5d7e96;
+      --blue: #1a619a;
+      --blue-dark: #124870;
+      --soft-blue: #e4f2ff;
+      --line: #c9dff0;
+      --sky: #72b0eb;
+      --cloud: #f6faff;
+      --turtle: #6d942f;
+      --width: 1050px;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; scroll-padding-top: 104px; }
@@ -47,22 +52,22 @@
     a { color: var(--blue); text-decoration: none; text-underline-offset: 4px; }
     a:hover { color: var(--blue-dark); text-decoration: underline; }
     a:focus-visible, button:focus-visible, summary:focus-visible {
-      outline: 3px solid #6b9ee9;
+      outline: 3px solid #4b8cd7;
       outline-offset: 5px;
       border-radius: 2px;
     }
     button { font: inherit; }
     button, a { -webkit-tap-highlight-color: transparent; }
-    ::selection { color: var(--ink); background: #dbe9ff; }
+    ::selection { color: var(--ink); background: #b8e0ff; }
     .skip {
       position: fixed; top: -100px; left: 18px; z-index: 100;
-      background: white; border: 1px solid var(--blue); padding: 10px 18px;
+      background: var(--cloud); border: 1px solid var(--blue); padding: 10px 18px;
     }
     .skip:focus { top: 12px; }
     .shell { width: min(var(--width), calc(100% - 64px)); margin-inline: auto; }
     .site-header {
       position: sticky; top: 0; z-index: 20;
-      background: rgba(255,255,255,.97); border-top: 3px solid var(--blue);
+      background: #e8f4ff; border-top: 3px solid var(--sky);
       border-bottom: 1px solid var(--line);
     }
     .header-inner {
@@ -89,49 +94,64 @@
       color: var(--muted); background: none; border: 0; font-size: 12px;
     }
     .language-switch button[aria-pressed="true"] { color: var(--blue); font-weight: 750; }
-    .language-divider { color: #a5afbd; font-size: 12px; }
+    .language-divider { color: #7499b8; font-size: 12px; }
     main { min-height: 80vh; }
     section { scroll-margin-top: 20px; }
-    /* Turtle illustration spans the full viewport even though content stays aligned to .shell. */
+    /* Full-color turtle artwork, with no overlay or gradient. */
     .about {
-      position: relative; isolation: isolate; color: #f4f8ff;
-      min-height: 555px; padding: 86px 0 56px;
+      position: relative; isolation: isolate;
+      min-height: 630px;
+      color: var(--ink);
+      padding: 88px 0 54px;
     }
     .about::before {
-      content: ""; position: absolute; z-index: -2;
-      left: 50%; width: 100vw; transform: translateX(-50%);
+      content: "";
+      position: absolute;
+      z-index: -1;
       top: 0; bottom: 0;
-      background-color: #173c3c;
-      background-image:
-        linear-gradient(90deg, rgba(11,31,45,.94) 0%, rgba(12,35,49,.87) 36%, rgba(13,42,49,.62) 65%, rgba(12,41,43,.38) 100%),
-        url("assets/turtle_ride.png");
-      background-position: center, center 44%;
-      background-size: cover, cover;
+      left: 50%; width: 100vw;
+      transform: translateX(-50%);
+      background-color: var(--sky);
+      background-image: url("assets/turtle_ride.png");
+      background-position: center 46%;
+      background-size: cover;
       background-repeat: no-repeat;
     }
-    .about::after {
-      content: ""; position: absolute; z-index: -1;
-      left: 50%; width: 100vw; transform: translateX(-50%);
-      height: 130px; bottom: 0;
-      background: linear-gradient(0deg, rgba(6,27,39,.28), transparent);
-      pointer-events: none;
-    }
     body { overflow-x: clip; }
-    .about-grid { display: grid; grid-template-columns: minmax(0, 1fr) 228px; gap: 70px; align-items: center; }
-    .about h1 { color: #fff; text-shadow: 0 3px 20px rgba(0,0,0,.14); }
-    .about .kicker { color: #cae7f5; }
-    .about .role-line { color: #d6e4ef; }
-    .about .role-line .separator { color: #b6ccdc; }
-    .about .bio p { color: #f0f5f8; max-width: 600px; }
-    .about .bio strong { color: #fff; }
-    .about .profile-links a { color: #fff; text-decoration-color: rgba(255,255,255,.5); }
-    .about .profile-links a:hover { color: #fff; text-decoration: underline; }
-    .about .profile-links a:first-child { padding: 4px 12px; border: 1px solid rgba(255,255,255,.55); border-radius: 5px; }
-    .about .profile-links a:first-child:hover { background: rgba(255,255,255,.13); text-decoration: none; }
-    .about .interests { padding-top: 20px; border-top: 1px solid rgba(236,248,255,.29); }
-    .about .interests h2 { color: #fff; }
-    .about .interest-list li { color: #e2eef7; }
-    .about .interest-list li::before { background: #c4e6fb; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 240px;
+      gap: clamp(35px, 6vw, 85px);
+      align-items: start;
+    }
+    .intro { max-width: 610px; }
+    .about h1 { color: #071d2e; text-shadow: none; }
+    .about .kicker { color: #08263b; }
+    .about .role-line { color: #092d48; }
+    .about .role-line .separator { color: #2b5372; }
+    .about .bio p { color: #061b2d; max-width: 560px; font-weight: 500; }
+    .about .bio strong { color: #061b2d; }
+    .about .profile-links a { color: #092d48; text-decoration-color: #092d48; }
+    .about .profile-links a:hover { color: #07365b; text-decoration: underline; }
+    .about .profile-links a:first-child {
+      padding: 5px 14px;
+      border: 1px solid #1a619a;
+      border-radius: 5px;
+      background: #e5f3ff;
+    }
+    .about .profile-links a:first-child:hover { background: #d2e9ff; text-decoration: none; }
+    .about .interests {
+      padding: 15px 18px;
+      width: fit-content;
+      max-width: 100%;
+      margin-top: 35px;
+      background: rgba(235,247,255,.90);
+      border: 1px solid #b8d8ef;
+      border-radius: 7px;
+    }
+    .about .interests h2 { color: #174870; }
+    .about .interest-list li { color: #285879; }
+    .about .interest-list li::before { background: var(--turtle); }
     .kicker {
       margin: 0 0 13px; color: var(--blue); font-size: 10px;
       font-weight: 700; letter-spacing: .19em; text-transform: uppercase;
@@ -139,30 +159,48 @@
     h1, h2 { color: var(--ink); font-family: Georgia, "Times New Roman", "Noto Serif KR", serif; font-weight: 400; }
     h1 { margin: 0 0 11px; font-size: clamp(38px, 4.4vw, 54px); line-height: 1.18; letter-spacing: -.035em; }
     .role-line { margin: 0 0 25px; color: var(--muted); font-size: 14px; }
-    .role-line .separator { padding-inline: 7px; color: #a1adbd; }
+    .role-line .separator { padding-inline: 7px; color: #82a3bc; }
     .bio p { margin: 0 0 13px; max-width: 650px; }
     .profile-links { display: flex; align-items: center; flex-wrap: wrap; gap: 9px 22px; margin-top: 24px; font-size: 13px; }
     .profile-links a { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; }
     .arrow { width: 13px; height: 13px; flex-shrink: 0; }
-    .portrait { margin: 4px 0 0; }
-    .portrait-frame {
-      aspect-ratio: 1 / 1.14; width: 100%; position: relative; overflow: hidden;
-      background: rgba(246,251,255,.94); border: 1px solid rgba(255,255,255,.65);
-      border-radius: 22px; box-shadow: 0 25px 66px rgba(0,16,32,.27);
+    /* The animated portrait sits in the right-hand column. */
+    .portrait {
+      width: 240px;
+      margin: 0;
+      justify-self: end;
+      position: relative;
+      transform: translateX(50px);
     }
-    /* object-fit: contain preserves all frames of the animated GIF without cropping. */
+    .portrait-frame {
+      aspect-ratio: 1 / 1.14;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      background: #f0f9ff;
+      border: 4px solid #e9f6ff;
+      border-radius: 19px;
+      box-shadow: 0 12px 28px rgba(27,71,104,.17);
+    }
+    /* Keep all frames of the animated GIF visible. */
     .portrait-frame img {
-      position: absolute; inset: 0; height: 100%; width: 100%;
-      object-fit: contain; object-position: center bottom; padding: 8px;
+      position: absolute; inset: 0;
+      height: 100%; width: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      padding: 7px;
     }
     .portrait-placeholder {
-      height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
-      color: #597baa; border: 1px solid #e0e9f6;
+      height: 100%; width: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: #497da8;
+      border: 1px solid #cee5f6;
     }
-    .portrait-initials { font: 57px/1 Georgia, serif; letter-spacing: -.04em; color: #5074a5; }
-    .portrait-rule { height: 1px; width: 32px; background: #a9bfdd; margin: 22px 0 13px; }
+    .portrait-initials { font: 57px/1 Georgia, serif; letter-spacing: -.04em; color: #3d729d; }
+    .portrait-rule { height: 1px; width: 32px; background: #a3cce9; margin: 22px 0 13px; }
     .portrait-caption { font-size: 9px; font-weight: 650; letter-spacing: .16em; text-transform: uppercase; }
-    .portrait figcaption { margin-top: 12px; text-align: center; font-size: 11px; color: #e9f1f8; letter-spacing: .035em; }
+    .portrait figcaption { margin-top: 12px; text-align: center; font-size: 11px; color: #1a4d73; letter-spacing: .035em; }
     .interests { display: flex; align-items: baseline; flex-wrap: wrap; gap: 7px 20px; margin-top: 31px; }
     .interests h2 { font: 650 12px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif; margin: 0; }
     .interest-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 5px 18px; }
@@ -176,11 +214,11 @@
     .project { min-width: 0; }
     .project-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 10px; color: var(--muted); }
     .project-number { font-size: 11px; color: var(--blue); font-variant-numeric: tabular-nums; }
-    .example { border: 1px solid #d6dfeb; padding: 0 6px; line-height: 1.7; color: var(--muted); }
+    .example { border: 1px solid #c4ddec; padding: 0 6px; line-height: 1.7; color: var(--muted); }
     h3 { font-size: 16px; line-height: 1.55; color: var(--ink); font-weight: 650; margin: 0 0 9px; letter-spacing: -.015em; }
     .project p { font-size: 13px; line-height: 1.85; margin: 0 0 11px; }
     .project-tools { color: var(--muted); font-size: 11px; }
-    .project-tools span + span::before { content: "/"; margin-inline: 8px; color: #a8b4c5; }
+    .project-tools span + span::before { content: "/"; margin-inline: 8px; color: #91b7cd; }
     .project-link { display: inline-block; margin-top: 9px; font-size: 12px; font-weight: 650; }
     .project a h3 { color: inherit; }
     .project-wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; border-top: 1px solid var(--line); padding-top: 23px; }
@@ -197,16 +235,23 @@
     .publication-list li + li { border-top: 1px solid var(--line); margin-top: 22px; padding-top: 22px; }
     .publication-list p { font-size: 13px; margin: 0; }
     .publication-list h3 { margin-bottom: 9px; }
-    .publication-list .pub-authors { color: #4f5e73; }
+    .publication-list .pub-authors { color: #416079; }
     .publication-list .pub-venue { color: var(--muted); margin-top: 5px; }
     .publication-links { display: flex; flex-wrap: wrap; gap: 10px 19px; font-size: 12px; margin-top: 10px; }
     .publication-links a { font-weight: 650; }
     .publication-mark { font-variant-numeric: tabular-nums; }
+    .award-line { display: grid; grid-template-columns: 135px minmax(0, 1fr); gap: 20px; }
+    .award-year { font-size: 12px; color: var(--muted); padding-top: 2px; }
+    .award-line h3 { margin-bottom: 8px; }
+    .award-rank { display: inline-block; margin-right: 9px; color: #3b6b20; font-size: 12px; font-weight: 750; }
+    .award-detail { margin: 0; font-size: 13px; color: var(--text); }
+    .award-extra { color: var(--muted); margin: 4px 0 0; font-size: 12px; }
+    .award-link { display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 650; }
     .contact { display: grid; grid-template-columns: 135px minmax(0, 1fr); gap: 20px; padding-block: 36px 40px; }
     .contact p { margin: 0 0 10px; font-size: 13px; }
     .contact-address { font-size: 15px; overflow-wrap: anywhere; }
     .contact-placeholder { color: var(--muted); font-size: 13px; }
-    .site-footer { border-top: 1px solid var(--line); background: #fafbfd; }
+    .site-footer { border-top: 1px solid var(--line); background: #e5f3ff; }
     .footer-inner { min-height: 84px; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 11px; color: var(--muted); }
     .footer-inner p { margin: 0; }
     .footer-inner a { min-height: 44px; display: inline-flex; align-items: center; gap: 6px; }
@@ -216,7 +261,8 @@
     @media (max-width: 850px) {
       .header-inner { gap: 18px; }
       .nav-links { gap: 17px; }
-      .about-grid { gap: 35px; grid-template-columns: minmax(0, 1fr) 190px; }
+      .about-grid { gap: 35px; grid-template-columns: minmax(0, 1fr) 205px; }
+      .portrait { width: 205px; transform: translateX(12px); }
       .language-switch { padding-left: 10px; }
     }
     @media (max-width: 720px) {
@@ -227,9 +273,10 @@
       .language-switch { border: 0; padding: 0; }
       .nav-links { grid-column: 1 / -1; grid-row: 2; justify-content: space-between; gap: 10px; padding-bottom: 2px; }
       .nav-links a { font-size: 12px; }
-      .about { padding: 64px 0 35px; min-height: 480px; }
-      .about::before { background-position: center, 60% center; background-image: linear-gradient(90deg, rgba(11,31,45,.94), rgba(12,35,49,.76)), url("assets/turtle_ride.png"); }
-      .about-grid { grid-template-columns: minmax(0, 1fr) 140px; gap: 23px; }
+      .about { padding: 62px 0 42px; min-height: 540px; }
+      .about::before { background-position: 42% center; }
+      .about-grid { grid-template-columns: minmax(0, 1fr) 150px; gap: 23px; }
+      .portrait { width: 150px; transform: none; }
       h1 { font-size: 39px; }
       .kicker { font-size: 9px; letter-spacing: .12em; }
       .role-line { font-size: 12px; margin-bottom: 19px; }
@@ -247,12 +294,14 @@
       .section-note { max-width: 145px; text-align: right; font-size: 10px; }
       .project-grid { gap: 26px 25px; }
       .project-wide { gap: 25px; }
-      .timeline li, .publications-layout, .contact { grid-template-columns: 105px minmax(0, 1fr); gap: 15px; }
+      .timeline li, .publications-layout, .contact, .award-line { grid-template-columns: 105px minmax(0, 1fr); gap: 15px; }
     }
     @media (max-width: 480px) {
-      .about { padding-top: 48px; min-height: 480px; }
-      .about::before { background-position: center, 60% 45%; }
-      .about-grid { grid-template-columns: minmax(0, 1fr) 112px; gap: 18px; }
+      .about { padding-top: 40px; min-height: 560px; }
+      .about::before { background-position: 36% center; }
+      .about-grid { grid-template-columns: minmax(0, 1fr) 112px; gap: 15px; }
+      .portrait { width: 112px; }
+      .about .interests { width: 100%; margin-top: 26px; padding: 11px 12px; background: rgba(235,247,255,.94); }
       .intro { display: contents; }
       .intro-heading { grid-column: 1; grid-row: 1; align-self: center; }
       .portrait { grid-column: 2; grid-row: 1; margin-top: 0; }
@@ -272,7 +321,7 @@
       .project-grid, .project-wide { grid-template-columns: 1fr; }
       .project-wide { gap: 4px; }
       .project:not(:first-child) { border-top: 1px solid var(--line); padding-top: 23px; }
-      .timeline li, .publications-layout, .contact { grid-template-columns: 1fr; gap: 8px; }
+      .timeline li, .publications-layout, .contact, .award-line { grid-template-columns: 1fr; gap: 8px; }
       .contact { gap: 15px; }
       .section-heading { margin-bottom: 21px; }
       .interests { display: block; }
@@ -280,6 +329,10 @@
       .interest-list { gap: 5px 13px; }
       .interest-list li { font-size: 11px; }
       .footer-inner { align-items: center; gap: 10px; font-size: 10px; }
+      .header-inner { row-gap: 0; }
+      .nav-links { gap: 8px; }
+      .nav-links a { font-size: 11px; }
+      .about .bio p { font-size: 13px; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     @media print {
@@ -288,6 +341,8 @@
       .about { padding-top: 0; }
       .section { break-inside: avoid; }
       a { color: var(--ink); }
+      .about::before { display: none; }
+      .about { background: #e5f3ff; }
     }
   </style>
 </head>
@@ -299,7 +354,7 @@
       <nav class="nav-links" aria-label="Main navigation" data-label-en="Main navigation" data-label-ko="주요 메뉴">
         <a href="#about" aria-current="location"><span data-lang="en">About</span><span data-lang="ko">소개</span></a>
         <a href="#projects"><span data-lang="en">Projects</span><span data-lang="ko">프로젝트</span></a>
-        <a href="#education"><span data-lang="en">Education</span><span data-lang="ko">학력</span></a>
+        <a href="#awards"><span data-lang="en">Awards</span><span data-lang="ko">수상</span></a>
         <a href="#publications"><span data-lang="en">Publications</span><span data-lang="ko">논문</span></a>
         <a href="#contact"><span data-lang="en">Contact</span><span data-lang="ko">연락처</span></a>
       </nav>
@@ -325,11 +380,11 @@
           <div class="bio">
             <div data-lang="en">
               <p>Hello, I’m <span data-profile="name">Chaerin Song</span>, an M.S. student in <span data-profile="department">Statistics and Data Science</span> at <span data-profile="university">Chung-Ang University</span>.</p>
-              <p> major : Voice/signal data processing, Bio signal authentication, deepfake .</p>
+              <p>My work focuses on machine learning for biomedical data and speech-based health assessment. I’m also interested in understanding how models represent and use information.</p>
             </div>
             <div data-lang="ko">
               <p>안녕하세요. <span data-profile="university">중앙대학교</span> <span data-profile="department">통계데이터사이언스학과</span> 석사과정에 재학 중인 <span data-profile="name">송채린</span>입니다.</p>
-              <p> major : 음성/신호 데이터 처리, 생체 신호 인증, deepfake.</p>
+              <p>의생물학 데이터와 음성 기반 건강 평가 문제에 머신러닝을 적용하고 있습니다. 모델이 정보를 어떻게 표현하고 활용하는지에도 관심이 있습니다.</p>
             </div>
           </div>
           <div class="profile-links">
@@ -408,6 +463,26 @@
           </div>
         </li>
       </ul>
+    </section>
+
+    <!-- EDIT 6: SAND 공식 leaderboard (Task 2 / CAU 4위, F1=0.5437). -->
+    <section id="awards" class="section" aria-labelledby="awards-title">
+      <div class="section-heading">
+        <h2 id="awards-title"><span data-lang="en">Honors &amp; Awards</span><span data-lang="ko">수상 및 성과</span></h2>
+        <p class="section-note"><span data-lang="en">Competition results</span><span data-lang="ko">대회 참가 성과</span></p>
+      </div>
+      <div class="award-line">
+        <span class="award-year">2025</span>
+        <div>
+          <h3>
+            <span data-lang="en">4th Place · SAND Challenge (Task 2)</span>
+            <span data-lang="ko">SAND Challenge Task 2 최종 4위</span>
+          </h3>
+          <p class="award-detail"><span data-lang="en">Speech Analysis for Neurodegenerative Diseases Challenge · Team CAU</span><span data-lang="ko">Speech Analysis for Neurodegenerative Diseases Challenge · CAU 팀</span></p>
+          <p class="award-extra"><span data-lang="en">Follow-up ALS severity prediction · Avg. F1-score 0.5437 · ICASSP 2026 Grand Challenge (held in 2025)</span><span data-lang="ko">추적 시점 ALS 중증도 예측 · 평균 F1-score 0.5437 · ICASSP 2026 Grand Challenge (2025년 개최)</span></p>
+          <a class="award-link" href="https://www.sand.icar.cnr.it/#page-top" target="_blank" rel="noopener noreferrer"><span data-lang="en">Official leaderboard</span><span data-lang="ko">공식 순위표</span> ↗</a>
+        </div>
+      </div>
     </section>
 
     <!-- EDIT 5: 출판 논문. KCI의 논문 상세 페이지에서 확인한 공식 서지 정보입니다. -->
