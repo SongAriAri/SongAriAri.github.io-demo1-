@@ -1,62 +1,566 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-language="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <!-- EDIT: 브라우저 탭 제목과 검색 설명 -->
-  <title>Your Name — Research & Ideas</title>
-  <meta name="description" content="A personal portfolio for research, projects, and publications.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Chaerin Song — research, projects, and publications in biomedical data science and machine learning.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="preload" as="image" href="assets/turtle_ride.png">
+  <title>Chaerin Song | Research homepage</title>
+  <!--
+    EDIT 1: 프로필 기본 정보 (맨 아래 PROFILE 객체)
+    EDIT 2: 소개 문단 (영어/한국어 각각)
+    EDIT 3: 프로젝트 카드
+    EDIT 4: 학력
+    EDIT 5: 실제 출판 논문 2편 (KCI 확인)
+    이미지 2개는 index.html 옆 assets 폴더에 있어야 합니다.
+       assets/crossed_arms_pose.gif  (움직이는 프로필)
+       assets/turtle_ride.png       (첫 화면 배경)
+    이미지는 이 파일 안에 포함되지 않으며, 브라우저는 GIF를 그대로 재생합니다.
+    전체 디자인은 단일 HTML 파일에 CSS/JS가 내장되어 있습니다.
+  -->
   <style>
-    :root{--ink:#183b30;--paper:#f6f5ee;--muted:#63736a;--line:#d8ded4;--accent:#c7e29d}
-    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.7 Arial,'Noto Sans KR',sans-serif}a{color:inherit}a:focus-visible,button:focus-visible{outline:3px solid #c6a94c;outline-offset:6px}.skip{position:fixed;top:-90px;left:20px;z-index:99;background:white;padding:10px}.skip:focus{top:10px}
-    header{position:fixed;inset:0 0 auto;z-index:10;background:rgba(13,41,29,.94);color:#fff}nav{max-width:1200px;margin:auto;height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 36px}.brand{text-decoration:none;font:bold 20px Georgia,serif;letter-spacing:.03em}.links{display:flex;gap:35px}.links a{text-decoration:none;font-size:15px;padding:7px 0;border-bottom:2px solid transparent}.links a:hover,.links a[aria-current]{border-color:var(--accent);color:var(--accent)}
-    .hero{height:100svh;min-height:660px;position:relative;color:white;isolation:isolate;display:flex;align-items:flex-end;padding:140px max(7vw,28px) 110px;background:#143927}.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:65% center;z-index:-2}.hero:after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(4,28,17,.52),transparent 85%),linear-gradient(0deg,rgba(4,28,17,.5),transparent 70%)}.hero-copy{max-width:640px}.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:bold}.hero h1{font:clamp(48px,7.5vw,100px)/1.08 Georgia,serif;margin:22px 0}.hero p{font-size:clamp(17px,2vw,23px);max-width:520px;color:#edf4e3}.hero .button{display:inline-block;text-decoration:none;border:1px solid #c8d6b7;padding:10px 22px;margin-top:20px;font-size:14px;background:rgba(12,39,25,.45)}.button:hover{background:#244b38}.down{position:absolute;bottom:30px;left:max(7vw,28px);font-size:12px;letter-spacing:.12em;text-decoration:none}
-    .section{max-width:1120px;margin:auto;padding:105px 36px}.section h2{font:clamp(36px,5vw,57px)/1.15 Georgia,serif;font-weight:normal;margin:15px 0 28px}.section p{color:var(--muted)}.about{display:grid;grid-template-columns:1fr 1.5fr;gap:70px}.about p{margin:0 0 22px}.tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}.tags span{border:1px solid var(--line);padding:5px 13px;font-size:13px}.projects-wrap{background:#e9eee5}.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px}.section-head p{font-size:14px;max-width:340px}.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:36px}.project{border-top:2px solid #809e73;padding-top:20px}.number{font:italic 30px Georgia,serif;color:#68835f}.project h3{font:26px/1.3 Georgia,serif;margin:23px 0 14px}.project p{font-size:15px}.type{font-size:11px;text-transform:uppercase;letter-spacing:.12em}.publications{list-style:none;margin:36px 0 0;padding:0}.publications li{display:grid;grid-template-columns:85px 1fr;gap:25px;border-top:1px solid var(--line);padding:28px 0}.year{font:24px Georgia,serif}.publications h3{font:24px/1.4 Georgia,serif;margin:0 0 9px}.publications p{font-size:14px;margin:0}.note{font-size:13px;color:var(--muted)}footer{background:#15392c;color:#e2eadc;padding:45px 36px}.footer-inner{max-width:1048px;margin:auto;display:flex;justify-content:space-between;gap:22px;font-size:13px}footer p{margin:0}footer a{text-underline-offset:4px}
-    @media(max-width:700px){nav{padding:0 20px;height:70px}.brand{font-size:17px}.links{gap:14px}.links a{font-size:12px}.hero{min-height:700px;padding:140px 25px 100px}.hero img{object-position:70% center}.hero:after{background:linear-gradient(0deg,rgba(4,28,17,.92),rgba(4,28,17,.05) 80%)}.hero h1{font-size:54px}.hero p{max-width:310px}.section{padding:70px 25px}.about{grid-template-columns:1fr;gap:12px}.section-head{display:block}.projects{grid-template-columns:1fr;gap:32px}.publications li{grid-template-columns:55px 1fr;gap:15px}.publications h3{font-size:21px}.footer-inner{flex-direction:column}.down{left:25px}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    :root {
+      --paper: #ffffff;
+      --ink: #1c2b41;
+      --text: #46546a;
+      --muted: #657086;
+      --blue: #2857a6;
+      --blue-dark: #173f82;
+      --soft-blue: #f1f6fd;
+      --line: #e2e8f1;
+      --width: 1000px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 104px; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--text);
+      font: 16px/1.8 -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Malgun Gothic", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-wrap: break-word;
+    }
+    [hidden] { display: none !important; }
+    html[data-language="en"] [data-lang="ko"],
+    html[data-language="ko"] [data-lang="en"] { display: none !important; }
+    a { color: var(--blue); text-decoration: none; text-underline-offset: 4px; }
+    a:hover { color: var(--blue-dark); text-decoration: underline; }
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 3px solid #6b9ee9;
+      outline-offset: 5px;
+      border-radius: 2px;
+    }
+    button { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    ::selection { color: var(--ink); background: #dbe9ff; }
+    .skip {
+      position: fixed; top: -100px; left: 18px; z-index: 100;
+      background: white; border: 1px solid var(--blue); padding: 10px 18px;
+    }
+    .skip:focus { top: 12px; }
+    .shell { width: min(var(--width), calc(100% - 64px)); margin-inline: auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(255,255,255,.97); border-top: 3px solid var(--blue);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      min-height: 76px; display: grid; grid-template-columns: 1fr auto auto;
+      align-items: center; gap: 32px;
+    }
+    .brand { color: var(--ink); font-size: 17px; font-weight: 700; letter-spacing: -.03em; }
+    .brand:hover { color: var(--blue); text-decoration: none; }
+    .brand-dot { color: var(--blue); }
+    .nav-links { display: flex; align-items: center; gap: 25px; }
+    .nav-links a {
+      display: inline-flex; align-items: center; min-height: 44px;
+      position: relative; font-size: 13px; color: var(--muted); white-space: nowrap;
+    }
+    .nav-links a::after {
+      content: ""; position: absolute; inset: auto 0 6px; height: 1px;
+      background: var(--blue); opacity: 0;
+    }
+    .nav-links a:hover, .nav-links a[aria-current="location"] { color: var(--blue); text-decoration: none; }
+    .nav-links a[aria-current="location"]::after { opacity: 1; }
+    .language-switch { display: flex; align-items: center; gap: 2px; padding-left: 17px; border-left: 1px solid var(--line); }
+    .language-switch button {
+      min-width: 38px; min-height: 44px; padding: 0 4px; cursor: pointer;
+      color: var(--muted); background: none; border: 0; font-size: 12px;
+    }
+    .language-switch button[aria-pressed="true"] { color: var(--blue); font-weight: 750; }
+    .language-divider { color: #a5afbd; font-size: 12px; }
+    main { min-height: 80vh; }
+    section { scroll-margin-top: 20px; }
+    /* Turtle illustration spans the full viewport even though content stays aligned to .shell. */
+    .about {
+      position: relative; isolation: isolate; color: #f4f8ff;
+      min-height: 555px; padding: 86px 0 56px;
+    }
+    .about::before {
+      content: ""; position: absolute; z-index: -2;
+      left: 50%; width: 100vw; transform: translateX(-50%);
+      top: 0; bottom: 0;
+      background-color: #173c3c;
+      background-image:
+        linear-gradient(90deg, rgba(11,31,45,.94) 0%, rgba(12,35,49,.87) 36%, rgba(13,42,49,.62) 65%, rgba(12,41,43,.38) 100%),
+        url("assets/turtle_ride.png");
+      background-position: center, center 44%;
+      background-size: cover, cover;
+      background-repeat: no-repeat;
+    }
+    .about::after {
+      content: ""; position: absolute; z-index: -1;
+      left: 50%; width: 100vw; transform: translateX(-50%);
+      height: 130px; bottom: 0;
+      background: linear-gradient(0deg, rgba(6,27,39,.28), transparent);
+      pointer-events: none;
+    }
+    body { overflow-x: clip; }
+    .about-grid { display: grid; grid-template-columns: minmax(0, 1fr) 228px; gap: 70px; align-items: center; }
+    .about h1 { color: #fff; text-shadow: 0 3px 20px rgba(0,0,0,.14); }
+    .about .kicker { color: #cae7f5; }
+    .about .role-line { color: #d6e4ef; }
+    .about .role-line .separator { color: #b6ccdc; }
+    .about .bio p { color: #f0f5f8; max-width: 600px; }
+    .about .bio strong { color: #fff; }
+    .about .profile-links a { color: #fff; text-decoration-color: rgba(255,255,255,.5); }
+    .about .profile-links a:hover { color: #fff; text-decoration: underline; }
+    .about .profile-links a:first-child { padding: 4px 12px; border: 1px solid rgba(255,255,255,.55); border-radius: 5px; }
+    .about .profile-links a:first-child:hover { background: rgba(255,255,255,.13); text-decoration: none; }
+    .about .interests { padding-top: 20px; border-top: 1px solid rgba(236,248,255,.29); }
+    .about .interests h2 { color: #fff; }
+    .about .interest-list li { color: #e2eef7; }
+    .about .interest-list li::before { background: #c4e6fb; }
+    .kicker {
+      margin: 0 0 13px; color: var(--blue); font-size: 10px;
+      font-weight: 700; letter-spacing: .19em; text-transform: uppercase;
+    }
+    h1, h2 { color: var(--ink); font-family: Georgia, "Times New Roman", "Noto Serif KR", serif; font-weight: 400; }
+    h1 { margin: 0 0 11px; font-size: clamp(38px, 4.4vw, 54px); line-height: 1.18; letter-spacing: -.035em; }
+    .role-line { margin: 0 0 25px; color: var(--muted); font-size: 14px; }
+    .role-line .separator { padding-inline: 7px; color: #a1adbd; }
+    .bio p { margin: 0 0 13px; max-width: 650px; }
+    .profile-links { display: flex; align-items: center; flex-wrap: wrap; gap: 9px 22px; margin-top: 24px; font-size: 13px; }
+    .profile-links a { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; }
+    .arrow { width: 13px; height: 13px; flex-shrink: 0; }
+    .portrait { margin: 4px 0 0; }
+    .portrait-frame {
+      aspect-ratio: 1 / 1.14; width: 100%; position: relative; overflow: hidden;
+      background: rgba(246,251,255,.94); border: 1px solid rgba(255,255,255,.65);
+      border-radius: 22px; box-shadow: 0 25px 66px rgba(0,16,32,.27);
+    }
+    /* object-fit: contain preserves all frames of the animated GIF without cropping. */
+    .portrait-frame img {
+      position: absolute; inset: 0; height: 100%; width: 100%;
+      object-fit: contain; object-position: center bottom; padding: 8px;
+    }
+    .portrait-placeholder {
+      height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: #597baa; border: 1px solid #e0e9f6;
+    }
+    .portrait-initials { font: 57px/1 Georgia, serif; letter-spacing: -.04em; color: #5074a5; }
+    .portrait-rule { height: 1px; width: 32px; background: #a9bfdd; margin: 22px 0 13px; }
+    .portrait-caption { font-size: 9px; font-weight: 650; letter-spacing: .16em; text-transform: uppercase; }
+    .portrait figcaption { margin-top: 12px; text-align: center; font-size: 11px; color: #e9f1f8; letter-spacing: .035em; }
+    .interests { display: flex; align-items: baseline; flex-wrap: wrap; gap: 7px 20px; margin-top: 31px; }
+    .interests h2 { font: 650 12px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif; margin: 0; }
+    .interest-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 5px 18px; }
+    .interest-list li { color: var(--muted); font-size: 12px; }
+    .interest-list li::before { content: ""; display: inline-block; width: 4px; height: 4px; margin-right: 8px; vertical-align: 3px; background: #7193c6; border-radius: 50%; }
+    .section { border-top: 1px solid var(--line); padding: 39px 0 42px; }
+    .section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin-bottom: 22px; }
+    h2 { font-size: 29px; letter-spacing: -.025em; line-height: 1.3; margin: 0; }
+    .section-note { font-size: 11px; color: var(--muted); margin: 0; }
+    .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 29px 48px; }
+    .project { min-width: 0; }
+    .project-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 10px; color: var(--muted); }
+    .project-number { font-size: 11px; color: var(--blue); font-variant-numeric: tabular-nums; }
+    .example { border: 1px solid #d6dfeb; padding: 0 6px; line-height: 1.7; color: var(--muted); }
+    h3 { font-size: 16px; line-height: 1.55; color: var(--ink); font-weight: 650; margin: 0 0 9px; letter-spacing: -.015em; }
+    .project p { font-size: 13px; line-height: 1.85; margin: 0 0 11px; }
+    .project-tools { color: var(--muted); font-size: 11px; }
+    .project-tools span + span::before { content: "/"; margin-inline: 8px; color: #a8b4c5; }
+    .project-link { display: inline-block; margin-top: 9px; font-size: 12px; font-weight: 650; }
+    .project a h3 { color: inherit; }
+    .project-wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; border-top: 1px solid var(--line); padding-top: 23px; }
+    .project-wide p { margin-top: 2px; }
+    .timeline { list-style: none; margin: 0; padding: 0; }
+    .timeline li { display: grid; grid-template-columns: 135px minmax(0, 1fr); gap: 20px; }
+    .timeline-period { color: var(--muted); font-size: 12px; padding-top: 2px; font-variant-numeric: tabular-nums; }
+    .timeline h3 { margin-bottom: 3px; }
+    .timeline p { color: var(--muted); font-size: 13px; margin: 0; }
+    .publications-layout { display: grid; grid-template-columns: 135px minmax(0, 1fr); gap: 20px; align-items: start; }
+    .publication-mark { font-size: 11px; color: var(--blue); padding-top: 3px; }
+    .publication-message { font-size: 13px; margin: 0; color: var(--muted); }
+    .publication-list { list-style: none; margin: 0; padding: 0; }
+    .publication-list li + li { border-top: 1px solid var(--line); margin-top: 22px; padding-top: 22px; }
+    .publication-list p { font-size: 13px; margin: 0; }
+    .publication-list h3 { margin-bottom: 9px; }
+    .publication-list .pub-authors { color: #4f5e73; }
+    .publication-list .pub-venue { color: var(--muted); margin-top: 5px; }
+    .publication-links { display: flex; flex-wrap: wrap; gap: 10px 19px; font-size: 12px; margin-top: 10px; }
+    .publication-links a { font-weight: 650; }
+    .publication-mark { font-variant-numeric: tabular-nums; }
+    .contact { display: grid; grid-template-columns: 135px minmax(0, 1fr); gap: 20px; padding-block: 36px 40px; }
+    .contact p { margin: 0 0 10px; font-size: 13px; }
+    .contact-address { font-size: 15px; overflow-wrap: anywhere; }
+    .contact-placeholder { color: var(--muted); font-size: 13px; }
+    .site-footer { border-top: 1px solid var(--line); background: #fafbfd; }
+    .footer-inner { min-height: 84px; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 11px; color: var(--muted); }
+    .footer-inner p { margin: 0; }
+    .footer-inner a { min-height: 44px; display: inline-flex; align-items: center; gap: 6px; }
+    html[data-language="ko"] h1 { font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif; font-weight: 650; letter-spacing: -.045em; }
+    html[data-language="ko"] h2 { font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif; font-size: 25px; font-weight: 600; letter-spacing: -.035em; }
+    html[data-language="ko"] .interests h2 { font-size: 12px; }
+    @media (max-width: 850px) {
+      .header-inner { gap: 18px; }
+      .nav-links { gap: 17px; }
+      .about-grid { gap: 35px; grid-template-columns: minmax(0, 1fr) 190px; }
+      .language-switch { padding-left: 10px; }
+    }
+    @media (max-width: 720px) {
+      html { scroll-padding-top: 126px; }
+      .shell { width: calc(100% - 40px); }
+      .header-inner { grid-template-columns: 1fr auto; gap: 0 12px; padding-top: 9px; }
+      .brand { font-size: 16px; }
+      .language-switch { border: 0; padding: 0; }
+      .nav-links { grid-column: 1 / -1; grid-row: 2; justify-content: space-between; gap: 10px; padding-bottom: 2px; }
+      .nav-links a { font-size: 12px; }
+      .about { padding: 64px 0 35px; min-height: 480px; }
+      .about::before { background-position: center, 60% center; background-image: linear-gradient(90deg, rgba(11,31,45,.94), rgba(12,35,49,.76)), url("assets/turtle_ride.png"); }
+      .about-grid { grid-template-columns: minmax(0, 1fr) 140px; gap: 23px; }
+      h1 { font-size: 39px; }
+      .kicker { font-size: 9px; letter-spacing: .12em; }
+      .role-line { font-size: 12px; margin-bottom: 19px; }
+      .role-line .separator { padding-inline: 3px; }
+      .bio p { font-size: 14px; line-height: 1.9; }
+      .portrait-initials { font-size: 43px; }
+      .portrait-rule { margin: 16px 0 10px; }
+      .portrait-caption { font-size: 7px; }
+      .portrait figcaption { font-size: 10px; }
+      .profile-links { gap: 7px 16px; margin-top: 18px; }
+      .interests { gap: 7px 15px; margin-top: 24px; }
+      .section { padding-block: 30px 32px; }
+      h2 { font-size: 26px; }
+      .section-heading { gap: 12px; }
+      .section-note { max-width: 145px; text-align: right; font-size: 10px; }
+      .project-grid { gap: 26px 25px; }
+      .project-wide { gap: 25px; }
+      .timeline li, .publications-layout, .contact { grid-template-columns: 105px minmax(0, 1fr); gap: 15px; }
+    }
+    @media (max-width: 480px) {
+      .about { padding-top: 48px; min-height: 480px; }
+      .about::before { background-position: center, 60% 45%; }
+      .about-grid { grid-template-columns: minmax(0, 1fr) 112px; gap: 18px; }
+      .intro { display: contents; }
+      .intro-heading { grid-column: 1; grid-row: 1; align-self: center; }
+      .portrait { grid-column: 2; grid-row: 1; margin-top: 0; }
+      .portrait figcaption { display: none; }
+      .bio, .profile-links { grid-column: 1 / -1; }
+      .about .profile-links a { min-height: 39px; }
+      .bio p:last-child { margin-bottom: 0; }
+      .profile-links { margin-top: -4px; }
+      .kicker { font-size: 8px; letter-spacing: .09em; margin-bottom: 10px; }
+      h1 { font-size: 35px; }
+      .role-line { margin-bottom: 0; line-height: 1.65; }
+      .role-line .separator { display: none; }
+      .role-line .university-wrap { display: block; }
+      .portrait-initials { font-size: 34px; }
+      .portrait-rule { margin: 12px 0 9px; width: 24px; }
+      .portrait-caption { font-size: 6px; }
+      .project-grid, .project-wide { grid-template-columns: 1fr; }
+      .project-wide { gap: 4px; }
+      .project:not(:first-child) { border-top: 1px solid var(--line); padding-top: 23px; }
+      .timeline li, .publications-layout, .contact { grid-template-columns: 1fr; gap: 8px; }
+      .contact { gap: 15px; }
+      .section-heading { margin-bottom: 21px; }
+      .interests { display: block; }
+      .interests h2 { margin-bottom: 6px; }
+      .interest-list { gap: 5px 13px; }
+      .interest-list li { font-size: 11px; }
+      .footer-inner { align-items: center; gap: 10px; font-size: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media print {
+      .site-header, .site-footer, .skip, .language-switch { display: none !important; }
+      .shell { width: 100%; }
+      .about { padding-top: 0; }
+      .section { break-inside: avoid; }
+      a { color: var(--ink); }
+    }
   </style>
 </head>
-<body>
-<a class="skip" href="#about">Skip to content</a>
-<header><nav aria-label="Main navigation">
-  <!-- EDIT: 이름/이니셜 -->
-  <a class="brand" href="#home">Your Name.</a>
-  <div class="links"><a href="#home" aria-current="location">Home</a><a href="#about">About</a><a href="#project">Project</a><a href="#publication">Publication</a></div>
-</nav></header>
-<main>
-  <section class="hero" id="home" aria-labelledby="name">
-    <!-- EDIT: 사진 교체는 assets/turtle-hero.png 파일을 바꾸거나 아래 src 수정 -->
-    <img src="assets/turtle-hero.png" alt="A smiling green cartoon turtle sitting by a sunlit forest pond" fetchpriority="high">
-    <div class="hero-copy"><span class="eyebrow">Welcome to my corner of the world</span><h1 id="name">Your Name</h1><p>Curious minds. Meaningful questions.<br>One small discovery at a time.</p><a class="button" href="#about">A little about me ↗</a></div>
-    <a href="#about" class="down">SCROLL TO EXPLORE ↓</a>
-  </section>
-  <!-- 아래 소개, 프로젝트, 논문은 모두 교체용 예시입니다. -->
-  <section class="section about" id="about" aria-labelledby="about-title">
-    <div><span class="eyebrow">01 / A little introduction</span><h2 id="about-title">About me.</h2></div>
-    <div><p>Hello! I’m <strong>Your Name</strong>, a student and aspiring researcher interested in how data can help us understand the world.</p><p>I enjoy turning interesting questions into thoughtful projects, learning new tools, and sharing what I discover along the way.</p><p>안녕하세요. 이곳에 소속, 관심 분야, 간단한 자기소개를 작성해 주세요. 수업 과제, 연구 활동, 개인 프로젝트 등을 소개할 수 있습니다.</p><div class="tags"><span>Data Science</span><span>Machine Learning</span><span>Creative Projects</span></div></div>
-  </section>
-  <div class="projects-wrap"><section class="section" id="project" aria-labelledby="project-title">
-    <div class="section-head"><div><span class="eyebrow">02 / Ideas in practice</span><h2 id="project-title">Selected projects.</h2></div><p>A few things I’m exploring, building, and learning from.</p></div>
-    <div class="projects">
-      <article class="project"><span class="number">01</span><h3>Making sense<br>of data</h3><span class="type">Example / Data analysis</span><p>Explore a public dataset, ask a clear question, and communicate the findings through simple visualizations.</p></article>
-      <article class="project"><span class="number">02</span><h3>Learning with<br>neural networks</h3><span class="type">Example / Machine learning</span><p>Build a small classification model and investigate what improves its performance and where it makes mistakes.</p></article>
-      <article class="project"><span class="number">03</span><h3>A space for<br>my ideas</h3><span class="type">Example / Web development</span><p>Create a personal website with HTML and CSS, then publish it with GitHub Pages to share projects and interests.</p></article>
+<body id="home">
+  <a class="skip" href="#main-content"><span data-lang="en">Skip to content</span><span data-lang="ko">본문으로 바로 가기</span></a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#about"><span data-profile="name">Chaerin Song</span><span class="brand-dot">.</span></a>
+      <nav class="nav-links" aria-label="Main navigation" data-label-en="Main navigation" data-label-ko="주요 메뉴">
+        <a href="#about" aria-current="location"><span data-lang="en">About</span><span data-lang="ko">소개</span></a>
+        <a href="#projects"><span data-lang="en">Projects</span><span data-lang="ko">프로젝트</span></a>
+        <a href="#education"><span data-lang="en">Education</span><span data-lang="ko">학력</span></a>
+        <a href="#publications"><span data-lang="en">Publications</span><span data-lang="ko">논문</span></a>
+        <a href="#contact"><span data-lang="en">Contact</span><span data-lang="ko">연락처</span></a>
+      </nav>
+      <div class="language-switch" role="group" aria-label="Language" data-label-en="Language" data-label-ko="언어 선택" hidden>
+        <button type="button" data-set-language="en" aria-pressed="true" lang="en" aria-label="English">EN</button>
+        <span class="language-divider" aria-hidden="true">/</span>
+        <button type="button" data-set-language="ko" aria-pressed="false" lang="ko" aria-label="한국어">한국어</button>
+      </div>
     </div>
-  </section></div>
-  <section class="section" id="publication" aria-labelledby="pub-title">
-    <span class="eyebrow">03 / Writing & research</span><h2 id="pub-title">Publications.</h2><p>Research papers, reports, and other things I’ve written.</p>
-    <p class="note">아래 항목은 형식을 보여주기 위한 가상 예시입니다. 논문이 없으면 수업 보고서나 발표 자료를 적어도 됩니다.</p>
-    <ol class="publications"><li><span class="year">2026</span><div><h3>Your research paper or project report title</h3><p><strong>Your Name</strong>, Coauthor Name</p><p>Journal / Conference / Course report · Example entry</p></div></li><li><span class="year">2025</span><div><h3>Another piece of writing you would like to share</h3><p><strong>Your Name</strong></p><p>Presentation / Technical report · Example entry</p></div></li></ol>
-  </section>
-</main>
-<footer><div class="footer-inner"><p>© <span id="year">2026</span> Your Name · Personal portfolio</p><a href="#home">Back to top ↑</a></div></footer>
-<script>
-  document.getElementById('year').textContent=new Date().getFullYear();
-  const links=[...document.querySelectorAll('.links a')];
-  const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(link=>{if(link.hash==='#'+entry.target.id){link.setAttribute('aria-current','location')}else{link.removeAttribute('aria-current')}})}});
-  },{rootMargin:'-20% 0px -55% 0px',threshold:0});
-  document.querySelectorAll('main section[id]').forEach(section=>observer.observe(section));
-</script>
+  </header>
+
+  <main id="main-content" class="shell" tabindex="-1">
+    <section id="about" class="about" aria-labelledby="name">
+      <div class="about-grid">
+        <div class="intro">
+          <div class="intro-heading">
+            <p class="kicker"><span data-lang="en">Welcome to my research page</span><span data-lang="ko">연구와 프로젝트 기록</span></p>
+            <h1 id="name" data-profile="name">Chaerin Song</h1>
+            <p class="role-line"><span data-profile="role">M.S. Student</span><span class="separator" aria-hidden="true">·</span><span class="university-wrap" data-profile="university">Chung-Ang University</span></p>
+          </div>
+
+          <!-- EDIT 2: 소개 문단. 영어와 한국어를 각각 수정할 수 있습니다. -->
+          <div class="bio">
+            <div data-lang="en">
+              <p>Hello, I’m <span data-profile="name">Chaerin Song</span>, an M.S. student in <span data-profile="department">Statistics and Data Science</span> at <span data-profile="university">Chung-Ang University</span>.</p>
+              <p>My work focuses on machine learning for biomedical data and speech-based health assessment. I’m also interested in understanding how models represent and use information.</p>
+            </div>
+            <div data-lang="ko">
+              <p>안녕하세요. <span data-profile="university">중앙대학교</span> <span data-profile="department">통계데이터사이언스학과</span> 석사과정에 재학 중인 <span data-profile="name">송채린</span>입니다.</p>
+              <p>의생물학 데이터와 음성 기반 건강 평가 문제에 머신러닝을 적용하고 있습니다. 모델이 정보를 어떻게 표현하고 활용하는지에도 관심이 있습니다.</p>
+            </div>
+          </div>
+          <div class="profile-links">
+            <a href="#projects"><span data-lang="en">View projects</span><span data-lang="ko">프로젝트 보기</span><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M3.5 12.5 12.5 3.5M3.5 3.5h9v9"/></svg></a>
+            <a data-contact-email hidden>Email</a>
+            <a data-link="github" hidden>GitHub <span aria-hidden="true">↗</span></a>
+            <a data-link="cv" hidden>CV <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <figure class="portrait">
+          <div class="portrait-frame">
+            <div class="portrait-placeholder" id="portrait-placeholder" role="img" aria-label="Initials placeholder" data-label-en="Initials placeholder" data-label-ko="이니셜 프로필">
+              <span class="portrait-initials" id="initials" aria-hidden="true">CS</span>
+              <span class="portrait-rule" aria-hidden="true"></span>
+              <span class="portrait-caption" aria-hidden="true">Research notes</span>
+            </div>
+            <img id="profile-photo" alt="Animated profile portrait" width="420" height="483" decoding="async" hidden>
+          </div>
+          <figcaption><span data-profile="name">Chaerin Song</span></figcaption>
+        </figure>
+      </div>
+
+      <!-- 관심 분야를 바꾸려면 아래 세 항목을 수정하세요. -->
+      <div class="interests">
+        <h2><span data-lang="en">Research interests</span><span data-lang="ko">관심 분야</span></h2>
+        <ul class="interest-list">
+          <li><span data-lang="en">Machine Learning</span><span data-lang="ko">머신러닝</span></li>
+          <li><span data-lang="en">Biomedical Data Science</span><span data-lang="ko">의생물학 데이터 분석</span></li>
+          <li><span data-lang="en">Speech &amp; Healthcare AI</span><span data-lang="ko">음성 및 의료 AI</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EDIT 3: 프로젝트. 출판된 논문 2편에서 다룬 연구 주제를 프로젝트로 소개합니다. -->
+    <section id="projects" class="section" aria-labelledby="projects-title">
+      <div class="section-heading">
+        <h2 id="projects-title"><span data-lang="en">Projects</span><span data-lang="ko">프로젝트</span></h2>
+        <p class="section-note"><span data-lang="en">Selected research &amp; work</span><span data-lang="ko">연구 및 작업 기록</span></p>
+      </div>
+      <div class="project-grid">
+        <article class="project">
+          <div class="project-meta"><span class="project-number">01</span><span data-lang="en">Speech &amp; healthcare</span><span data-lang="ko">음성 및 의료 AI</span></div>
+          <h3><span data-lang="en">ALS severity prediction from speech</span><span data-lang="ko">음성으로 ALS 중증도 예측하기</span></h3>
+          <p><span data-lang="en">A study of hybrid speech features combining pretrained Whisper embeddings with acoustic features to estimate ALS severity.</span><span data-lang="ko">Whisper 임베딩과 음향 특징을 결합해 ALS 중증도를 예측하는 연구입니다.</span></p>
+          <div class="project-tools"><span>Speech</span><span>Whisper</span><span>Machine Learning</span></div>
+          <a class="project-link" href="https://doi.org/10.5351/KJAS.2026.39.4.401" target="_blank" rel="noopener noreferrer"><span data-lang="en">Read the paper</span><span data-lang="ko">논문 보기</span> ↗</a>
+        </article>
+        <article class="project">
+          <div class="project-meta"><span class="project-number">02</span><span data-lang="en">Biomedical data</span><span data-lang="ko">의생물학 데이터</span></div>
+          <h3><span data-lang="en">ML vs. DL on biomedical tabular data</span><span data-lang="ko">의생물학 표 형식 데이터의 ML·DL 비교</span></h3>
+          <p><span data-lang="en">A benchmark comparing tree-based machine learning and deep learning models across five biomedical tabular datasets.</span><span data-lang="ko">5개의 의생물학 표 형식 데이터셋에서 트리 기반 머신러닝과 딥러닝 모델을 비교했습니다.</span></p>
+          <div class="project-tools"><span>Tabular Data</span><span>Benchmarking</span><span>Deep Learning</span></div>
+          <a class="project-link" href="https://doi.org/10.37727/jkdas.2025.27.5.1501" target="_blank" rel="noopener noreferrer"><span data-lang="en">Read the paper</span><span data-lang="ko">논문 보기</span> ↗</a>
+        </article>
+        <article class="project project-wide">
+          <div>
+            <div class="project-meta"><span class="project-number">03</span><span data-lang="en">Personal project</span><span data-lang="ko">개인 프로젝트</span></div>
+            <h3><span data-lang="en">Research homepage</span><span data-lang="ko">개인 연구 홈페이지</span></h3>
+            <div class="project-tools"><span>HTML / CSS</span><span>GitHub Pages</span></div>
+          </div>
+          <p><span data-lang="en">A place to collect my publications, projects, and research interests in one page.</span><span data-lang="ko">논문과 프로젝트, 관심 있는 연구 주제를 한곳에 정리하는 홈페이지입니다.</span></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- EDIT 4: 학력. 재학 시작 연도는 확인되지 않아 임의로 넣지 않았습니다. -->
+    <section id="education" class="section" aria-labelledby="education-title">
+      <div class="section-heading"><h2 id="education-title"><span data-lang="en">Education</span><span data-lang="ko">학력</span></h2></div>
+      <ul class="timeline">
+        <li>
+          <div class="timeline-period"><span data-lang="en">Current</span><span data-lang="ko">재학 중</span></div>
+          <div>
+            <h3><span data-lang="en">M.S. Student</span><span data-lang="ko">석사과정</span></h3>
+            <p data-profile="university">Chung-Ang University</p>
+            <p data-profile="department">Department of Statistics and Data Science</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- EDIT 5: 출판 논문. KCI의 논문 상세 페이지에서 확인한 공식 서지 정보입니다. -->
+    <section id="publications" class="section" aria-labelledby="publications-title">
+      <div class="section-heading"><h2 id="publications-title"><span data-lang="en">Publications</span><span data-lang="ko">논문</span></h2></div>
+      <div class="publications-layout">
+        <span class="publication-mark">2026 / 2025</span>
+        <ol class="publication-list">
+          <li>
+            <h3><span data-lang="en">A deep learning approach using hybrid features for ALS severity prediction from speech</span><span data-lang="ko">음성 기반 ALS 중증도 예측을 위한 하이브리드 특징 기반 딥러닝 기법</span></h3>
+            <p class="pub-authors"><span data-lang="en"><strong>Song Chaerin</strong>, Ryu Jungchan, Lee Chaerin, Kim Minsu, Kwak Il-Youp</span><span data-lang="ko"><strong>송채린</strong>, 류정찬, 이채린, 김민수, 곽일엽</span></p>
+            <p class="pub-venue"><span data-lang="en">The Korean Journal of Applied Statistics</span><span data-lang="ko">응용통계연구</span> · 2026 · 39(4), 401–417</p>
+            <div class="publication-links">
+              <a href="https://doi.org/10.5351/KJAS.2026.39.4.401" target="_blank" rel="noopener noreferrer">DOI ↗</a>
+              <a href="https://www.kci.go.kr/kciportal/mobile/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003377981" target="_blank" rel="noopener noreferrer">KCI ↗</a>
+            </div>
+          </li>
+          <li>
+            <h3><span data-lang="en">Benchmarking Deep Learning vs. Traditional Machine Learning on Biomedical Tabular Data</span><span data-lang="ko">의생물학 Tabular 데이터에서 딥러닝과 전통적 머신러닝의 성능 비교</span></h3>
+            <p class="pub-authors"><span data-lang="en"><strong>Chaerin Song</strong>, Nahyun Lee, Il-Youp Kwak</span><span data-lang="ko"><strong>송채린</strong>, 이나현, 곽일엽</span></p>
+            <p class="pub-venue">Journal of The Korean Data Analysis Society · 2025 · 27(5), 1501–1515</p>
+            <div class="publication-links">
+              <a href="https://doi.org/10.37727/jkdas.2025.27.5.1501" target="_blank" rel="noopener noreferrer">DOI ↗</a>
+              <a href="https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003258368" target="_blank" rel="noopener noreferrer">KCI ↗</a>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <h2 id="contact-title"><span data-lang="en">Contact</span><span data-lang="ko">연락처</span></h2>
+      <div>
+        <p><span data-lang="en">For questions about my projects or research, please get in touch by email.</span><span data-lang="ko">프로젝트나 연구에 관한 이야기는 이메일로 보내 주세요.</span></p>
+        <a class="contact-address" data-contact-email data-show-email hidden></a>
+        <span class="contact-placeholder" id="email-placeholder"><span data-lang="en">Email address to be added.</span><span data-lang="ko">이메일 주소를 준비 중입니다.</span></span>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <p>© <span id="year">2026</span> <span data-profile="name">Chaerin Song</span></p>
+      <a href="#about"><span data-lang="en">Back to top</span><span data-lang="ko">맨 위로</span><span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+
+  <script>
+    /* EDIT 1: 프로필 기본 정보입니다.
+       GIF는 HTML의 img 요소에서 자동으로 재생됩니다. 변환할 필요 없습니다.
+       파일 경로는 실제 GitHub 저장소의 assets 폴더와 일치해야 합니다.
+       email, github, cv는 값을 넣기 전에는 해당 링크가 표시되지 않습니다.
+       defaultLanguage를 "ko"로 바꾸면 한국어가 먼저 표시됩니다. */
+    const PROFILE = {
+      name: { en: "Chaerin Song", ko: "송채린" },
+      role: { en: "M.S. Student", ko: "석사과정" },
+      university: { en: "Chung-Ang University", ko: "중앙대학교" },
+      department: { en: "Department of Statistics and Data Science", ko: "통계데이터사이언스학과" },
+      initials: "CS",
+      email: "",
+      github: "",
+      cv: "",
+      photo: "assets/crossed_arms_pose.gif",
+      defaultLanguage: "en"
+    };
+
+    const languageButtons = [...document.querySelectorAll('[data-set-language]')];
+    const languageSwitch = document.querySelector('.language-switch');
+    const photo = document.getElementById('profile-photo');
+    const placeholder = document.getElementById('portrait-placeholder');
+    let currentLanguage = PROFILE.defaultLanguage === 'ko' ? 'ko' : 'en';
+
+    function applyLanguage(language, updateUrl = false) {
+      currentLanguage = language === 'ko' ? 'ko' : 'en';
+      document.documentElement.lang = currentLanguage;
+      document.documentElement.dataset.language = currentLanguage;
+      document.querySelectorAll('[data-profile]').forEach(element => {
+        const value = PROFILE[element.dataset.profile];
+        if (value) element.textContent = value[currentLanguage] || value.en;
+      });
+      document.querySelectorAll('[data-label-en]').forEach(element => {
+        element.setAttribute('aria-label', element.getAttribute('data-label-' + currentLanguage));
+      });
+      languageButtons.forEach(button => {
+        button.setAttribute('aria-pressed', String(button.dataset.setLanguage === currentLanguage));
+      });
+      const name = PROFILE.name[currentLanguage] || PROFILE.name.en;
+      document.title = name + (currentLanguage === 'ko' ? ' | 연구 홈페이지' : ' | Research homepage');
+      photo.alt = name + (currentLanguage === 'ko' ? ' 움직이는 프로필 이미지' : ' animated profile illustration');
+      document.querySelector('meta[name="description"]').content = currentLanguage === 'ko'
+        ? name + '의 소개, 관심 분야, 프로젝트를 정리한 개인 연구 홈페이지입니다.'
+        : 'Introduction, research interests, and projects by ' + name + '.';
+      if (updateUrl && location.protocol !== 'file:') {
+        try {
+          const url = new URL(location.href);
+          url.searchParams.set('lang', currentLanguage);
+          history.replaceState(null, '', url);
+        } catch (_) { /* 로컬 파일이나 제한된 미리보기에서도 언어 전환은 작동합니다. */ }
+      }
+    }
+
+    const requestedLanguage = new URLSearchParams(location.search).get('lang');
+    applyLanguage(['en', 'ko'].includes(requestedLanguage) ? requestedLanguage : currentLanguage);
+    languageSwitch.hidden = false;
+    languageButtons.forEach(button => button.addEventListener('click', () => applyLanguage(button.dataset.setLanguage, true)));
+    window.addEventListener('popstate', () => {
+      const language = new URLSearchParams(location.search).get('lang');
+      applyLanguage(['en', 'ko'].includes(language) ? language : PROFILE.defaultLanguage);
+    });
+
+    document.getElementById('initials').textContent = PROFILE.initials;
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const email = PROFILE.email.trim();
+    if (email) {
+      document.querySelectorAll('[data-contact-email]').forEach(link => {
+        link.href = 'mailto:' + email;
+        link.hidden = false;
+        if (link.hasAttribute('data-show-email')) link.textContent = email;
+      });
+      document.getElementById('email-placeholder').hidden = true;
+    }
+    document.querySelectorAll('[data-link]').forEach(link => {
+      const destination = PROFILE[link.dataset.link].trim();
+      if (destination) { link.href = destination; link.hidden = false; }
+    });
+    if (PROFILE.photo.trim()) {
+      photo.addEventListener('load', () => { photo.hidden = false; placeholder.hidden = true; });
+      photo.addEventListener('error', () => { photo.hidden = true; placeholder.hidden = false; });
+      photo.src = PROFILE.photo.trim();
+    }
+
+    // 현재 읽는 섹션의 메뉴를 표시합니다. 사진 없는 상태와 JS 없는 상태도 읽을 수 있습니다.
+    const navigationLinks = [...document.querySelectorAll('.nav-links a')];
+    const sections = navigationLinks.map(link => document.querySelector(link.hash)).filter(Boolean);
+    const header = document.querySelector('.site-header');
+    let scrollPending = false;
+    function updateActiveSection() {
+      scrollPending = false;
+      const threshold = header.getBoundingClientRect().height + 70;
+      let active = sections[0];
+      sections.forEach(section => { if (section.getBoundingClientRect().top <= threshold) active = section; });
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) active = sections[sections.length - 1];
+      navigationLinks.forEach(link => {
+        if (active && link.hash === '#' + active.id) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    }
+    function scheduleNavigationUpdate() {
+      if (!scrollPending) { scrollPending = true; requestAnimationFrame(updateActiveSection); }
+    }
+    window.addEventListener('scroll', scheduleNavigationUpdate, { passive: true });
+    window.addEventListener('resize', scheduleNavigationUpdate);
+    window.addEventListener('hashchange', scheduleNavigationUpdate);
+    requestAnimationFrame(updateActiveSection);
+  </script>
 </body>
 </html>
